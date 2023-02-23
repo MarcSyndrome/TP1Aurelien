@@ -1,23 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
+
 // importe le composant StatusBar d'expo-status-bar. Ce composant permet d'afficher une barre de statut dans l'application mobile.
+import { StatusBar } from 'expo-status-bar';
 
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 // importe plusieurs composants de react-native qui seront utilisés dans l'application.
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
-import React, { useState } from 'react';
 // importe React et useState, une fonction de React qui permet de gérer l'état d'un composant.
+import React, { useState } from 'react';
 
 const sampleGoals = [
-  { text: "Faire les courses", red: true },
-  { text: "Aller à la salle de sport 3 fois par semaine", red: false },
-  { text: "Monter à plus de 5000m d altitude", red: false },
-  { text: "Acheter mon premier appartement", red: false, boldText: "(déjà fait)" },
-  { boldText: "Perdre 5 kgs", red: true },
-  { text: "Gagner en productivité", red: false },
-  { text: "Apprendre un nouveau langage", red: false },
-  { text: "Faire une mission en freelance", red: false },
-  { text: "Organiser un meetup autour de la tech", red: false },
-  { text: "Faire un triathlon", red: false },
+  { text: "Faire les courses" },
+  { text: "Aller à la salle de sport 3 fois par semaine" },
+  { text: "Monter à plus de 5000m d altitude" },
+  { text: "Acheter mon premier appartement (déjà fait)" },
+  { boldText: "Perdre 5 kgs" },
+  { text: "Gagner en productivité" },
+  { text: "Apprendre un nouveau langage" },
+  { text: "Faire une mission en freelance" },
+  { text: "Organiser un meetup autour de la tech" },
+  { text: "Faire un triathlon" },
 ];
 
 export default function App() {
@@ -47,24 +48,33 @@ export default function App() {
         </Text>
       ))}
 
-      {/* Champ input pour ajouter un nouvel objectif */}
-      <TextInput
-        style={styles.input}
-        placeholder="Ajouter un nouveau goal"
-        value={newGoal}
-        onChangeText={(text) => setNewGoal(text)}
-      />
+      {/* On ajoute dans la vue l'input et le bouton en "row" */}
+      <View style={styles.inputContainer}>
 
-      {/* Bouton pour ajouter le nouvel objectif */}
-      <TouchableOpacity style={styles.button} onPress={handleAddGoal}>
-        <Text style={styles.buttonText}>Add</Text>
-      </TouchableOpacity>
-      <StatusBar style="auto" />
+        {/* Champ input pour ajouter un nouvel objectif */}
+        <TextInput
+          style={styles.input}
+          placeholder="Ajouter un nouvel objectif"
+          value={newGoal}
+          onChangeText={(text) => setNewGoal(text)}
+        />
+
+        {/* Bouton pour ajouter le nouvel objectif */}
+        <TouchableOpacity style={styles.button} onPress={handleAddGoal}>
+          <Text style={styles.buttonText}>Add</Text>
+        </TouchableOpacity>
+        <StatusBar style="auto" />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 20,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -76,14 +86,13 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     borderRadius: 5,
     padding: 10,
-    marginVertical: 10,
-    width: "20%",
+    margin: 10,
+    width:"185px"
   },
   button: {
     backgroundColor: "blue",
     padding: 10,
     borderRadius: 5,
-    marginTop: 5,
   },
   buttonText: {
     color: "white",
