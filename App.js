@@ -1,69 +1,64 @@
 
-// importe le composant StatusBar d'expo-status-bar. Ce composant permet d'afficher une barre de statut dans l'application mobile.
+
 import { StatusBar } from 'expo-status-bar';
-
-// importe plusieurs composants de react-native qui seront utilisés dans l'application.
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-
-// importe React et useState, une fonction de React qui permet de gérer l'état d'un composant.
 import React, { useState } from 'react';
 
 const sampleGoals = [
-  { text: "Faire les courses" },
-  { text: "Aller à la salle de sport 3 fois par semaine" },
-  { text: "Monter à plus de 5000m d altitude" },
-  { text: "Acheter mon premier appartement (déjà fait)" },
-  { boldText: "Perdre 5 kgs" },
-  { text: "Gagner en productivité" },
-  { text: "Apprendre un nouveau langage" },
-  { text: "Faire une mission en freelance" },
-  { text: "Organiser un meetup autour de la tech" },
-  { text: "Faire un triathlon" },
+  "Faire les courses",
+  "Aller à la salle de sport 3 fois par semaine",
+  "Monter à plus de 5000m d altitude",
+  "Acheter mon premier appartement (déjà fait)",
+  "Perdre 5 kgs",
+  "Gagner en productivité",
+  "Apprendre un nouveau langage",
+  "Faire une mission en freelance",
+  "Organiser un meetup autour de la tech",
+  "Faire un triathlon",
 ];
 
 export default function App() {
-
-  // État local pour stocker la valeur de l'input
   const [newGoal, setNewGoal] = useState("");
+  const [goals, setGoals] = useState(sampleGoals);
 
-  // Fonction pour ajouter un nouveau goal à la liste
   const handleAddGoal = () => {
-    // Vérifier si la valeur de l'input est vide
     if (newGoal.trim() === "") {
       return;
     }
-    // Ajouter le nouveau goal à la liste
-    sampleGoals.push({ text: newGoal, red: false });
-    // Réinitialiser la valeur de l'input
+    setGoals([...goals, newGoal]);
     setNewGoal("");
+  };
+
+  const handleDeleteGoal = (index) => {
+    const newGoals = [...goals];
+    newGoals.splice(index, 1);
+    setGoals(newGoals);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={{ fontWeight: "bold" }}>app.js</Text>
-      {/* Affiche tous les objectifs de la liste */}
-      {sampleGoals.map((goal, index) => (
-        <Text key={index} style={{ color: goal.red ? "red" : "black" }}>
-          {goal.text} {goal.boldText && <Text style={{ fontWeight: "bold" }}>{goal.boldText}</Text>}
-        </Text>
-      ))}
-
-      {/* On ajoute dans la vue l'input et le bouton en "row" */}
-      <View style={styles.inputContainer}>
-
-        {/* Champ input pour ajouter un nouvel objectif */}
-        <TextInput
-          style={styles.input}
-          placeholder="Ajouter un nouvel objectif"
-          value={newGoal}
-          onChangeText={(text) => setNewGoal(text)}
-        />
-
-        {/* Bouton pour ajouter le nouvel objectif */}
-        <TouchableOpacity style={styles.button} onPress={handleAddGoal}>
-          <Text style={styles.buttonText}>Add</Text>
-        </TouchableOpacity>
-        <StatusBar style="auto" />
+      <View style={styles.containerView}>
+        <Text style={{ fontWeight: "bold" }}>app.js</Text>
+        {goals.map((goal, index) => (
+          <View style={styles.goalContainer} key={index}>
+            <Text style={styles.goalText}>{goal}</Text>
+            <TouchableOpacity style={styles.deleteButton} onPress={() => handleDeleteGoal(index)}>
+              <Text style={styles.deleteButton}>X</Text>
+            </TouchableOpacity>
+          </View>
+        ))}
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Ajouter un nouvel objectif"
+            value={newGoal}
+            onChangeText={(text) => setNewGoal(text)}
+          />
+          <TouchableOpacity style={styles.button} onPress={handleAddGoal}>
+            <Text style={styles.buttonText}>Add</Text>
+          </TouchableOpacity>
+          <StatusBar style="auto" />
+        </View>
       </View>
     </View>
   );
@@ -75,9 +70,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
+  containerView: {
+    backgroundColor: "#D6DBDF",
+    padding: 40,
+    borderRadius: 10
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FDFDFD',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -87,7 +87,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     margin: 10,
-    width:"185px"
   },
   button: {
     backgroundColor: "blue",
@@ -98,4 +97,21 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
-});
+  goalContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  goalText: {
+    flex: 1,
+    backgroundColor: "#FFFFDF",
+    padding: 10,
+    borderRadius: 5,
+    marginRight: 10,
+  },
+  deleteButton: {
+    backgroundColor: "#C700DF",
+    padding: 5,
+    borderRadius: 5,
+  },
+})
