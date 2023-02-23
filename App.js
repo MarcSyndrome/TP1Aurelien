@@ -17,6 +17,7 @@ const sampleGoals = [
 export default function App() {
   return (
     <View style={styles.container}>
+      <Text style={{ fontWeight: "bold" }}>app.js</Text>
       {sampleGoals.map((goal, index) => (
         <Text key={index} style={{ color: goal.red ? "red" : "black" }}>
           {goal.text} {goal.boldText && <Text style={{ fontWeight: "bold" }}>{goal.boldText}</Text>}
