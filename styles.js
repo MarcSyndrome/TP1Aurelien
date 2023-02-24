@@ -16,19 +16,25 @@ const styles = StyleSheet.create({
     image: {
         flex: 1,
         justifyContent: 'center',
+        width: '100%',
     },
     containerView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignSelf: 'center',
         backgroundColor: "#D6DBDF",
-        padding: 40,
-        borderRadius: 10
+        padding: 20,
+        borderRadius: 10,
+        width: 310,
+        opacity: 0.9,
+        maxHeight: "80%"
     },
     input: {
         borderWidth: 1,
         borderColor: "gray",
         borderRadius: 5,
         padding: 10,
-        margin: 20,
-        width: 200,
+        margin: 5,
     },
     button: {
         backgroundColor: "blue",

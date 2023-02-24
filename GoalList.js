@@ -3,7 +3,6 @@ import { View } from 'react-native';
 import Goal from './Goal';
 
 const GoalList = ({ goals, onDelete }) => {
-  console.log("goals :", goals);
   return (
     <View>
       {goals.map((goal, index) => (
