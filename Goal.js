@@ -7,7 +7,7 @@ const Goal = ({ goal, onDelete }) => {
         <View style={styles.goalContainer}>
             <Text style={styles.goalText}>{goal}</Text>
             <TouchableOpacity style={styles.deleteButton} onPress={onDelete}>
-                <Text style={styles.deleteButtonText}>X</Text>
+                <Text>X</Text>
             </TouchableOpacity>
         </View>
     );
