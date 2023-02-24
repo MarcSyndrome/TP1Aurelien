@@ -19,13 +19,11 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     containerView: {
-        flex: 1,
-        justifyContent: 'center',
         alignSelf: 'center',
         backgroundColor: "#D6DBDF",
         padding: 20,
         borderRadius: 10,
-        width: 310,
+        width: 330,
         opacity: 0.9,
     },
     input: {
@@ -61,6 +59,9 @@ const styles = StyleSheet.create({
         backgroundColor: "#C700DF",
         padding: 5,
         borderRadius: 5,
+    },
+    icon: {
+        marginHorizontal: 8,
     },
 });
 
