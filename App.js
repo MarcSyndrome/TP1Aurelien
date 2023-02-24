@@ -2,7 +2,7 @@
 // importe le composant StatusBar d'expo-status-bar. Ce composant permet d'afficher une barre de statut dans l'application mobile.
 import { StatusBar } from 'expo-status-bar';
 
-import { View, ImageBackground } from 'react-native';
+import { View, ImageBackground, Dimensions } from 'react-native';
 // importe React et useState, une fonction de React qui permet de gérer l'état d'un composant.
 import React, { useState } from 'react';
 import styles from './styles';
@@ -39,10 +39,12 @@ export default function App() {
     setGoals(newGoals);
   };
 
+  const { height } = Dimensions.get('window');
+
   return (
     <View style={styles.container}>
       <ImageBackground source={require('./assets/treeBack.jpg')} resizeMode="cover" style={styles.image}>
-        <View style={styles.containerView}>
+        <View style={[styles.containerView, { height: Math.min(height * 0.8) }]}>
           <GoalList goals={goals} onDelete={handleDeleteGoal} />
           <GoalInput onAdd={handleAddGoal} />
         </View>

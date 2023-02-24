@@ -4,11 +4,14 @@ import styles from './styles';
 
 const GoalInput = ({ onAdd }) => {
     const [newGoal, setNewGoal] = useState('');
+    const [inputStyle, setInputStyle] = useState(styles.input);
 
     const handleAddGoal = () => {
         if (newGoal.trim() === '') {
+            setInputStyle({ ...styles.input, borderColor: "red" });
             return;
         }
+        setInputStyle(styles.input); // remet la bordure en noir
         onAdd(newGoal);
         setNewGoal('');
     };
@@ -16,7 +19,7 @@ const GoalInput = ({ onAdd }) => {
     return (
         <View style={styles.inputContainer}>
             <TextInput
-                style={styles.input}
+                style={inputStyle}
                 placeholder="Ajouter un nouvel objectif"
                 value={newGoal}
                 onChangeText={setNewGoal}
