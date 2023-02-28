@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text } from 'react-native';
-import styles from './styles';
+import styles from '../Styles/styles';
 
 const GoalInput = ({ onAdd }) => {
-    const [newGoal, setNewGoal] = useState('');
+    const [newGoal, setNewGoal] = useState("");
     const [inputStyle, setInputStyle] = useState(styles.input);
 
     const handleAddGoal = () => {
@@ -11,7 +11,7 @@ const GoalInput = ({ onAdd }) => {
             setInputStyle({ ...styles.input, borderColor: "red" });
             return;
         }
-        setInputStyle(styles.input); // remet la bordure en noir
+        setInputStyle(styles.input); // Permet à l'application de déborder sur la barre du haut du téléphone
         onAdd(newGoal);
         setNewGoal('');
     };
