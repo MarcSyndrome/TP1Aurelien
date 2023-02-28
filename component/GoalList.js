@@ -1,5 +1,5 @@
 import { FlatList, View, Text } from 'react-native';
-import Goal from './Goal';              
+import DeleteGoal from './DeleteGoal';              
 // importe React et useState, une fonction de React qui permet de gérer l'état d'un composant.
 import React, { useState } from 'react';
 import EditModal from '../component/EditModal';
@@ -20,7 +20,7 @@ const sampleGoals = [
 ];
 
 
-const GoalList = ({ onDelete }) => {
+const GoalList = () => {
   const [goals, setGoals] = useState([...sampleGoals]);
 
 const handleAddGoal = (newGoal) => {
@@ -52,14 +52,16 @@ const handleEditGoal = (index, EditText) => {
   <FlatList
     data={goals}
     renderItem={({ item, index }) => (
-      <>
-      <Goal key={index} goal={item} onDelete={() => onDelete(index)} />
+      <View style={styles.row}>
+      <Text style={styles.goalText}>{item}</Text>
       <EditModal
         index={index} initialValue={item} handleEditGoal={handleEditGoal}>
       </EditModal>
-      </>
+      <DeleteGoal index={index} goal={item} handleDeleteGoal={handleDeleteGoal}>
+      </DeleteGoal>
+      </View>
     )}
-    keyExtractor={(item, index) => index.toString()}
+    keyExtractor={(index) => index.toString()}
     />
   );
 };

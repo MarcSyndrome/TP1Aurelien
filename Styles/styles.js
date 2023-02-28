@@ -1,6 +1,6 @@
 
 // importe plusieurs composants de react-native qui seront utilisés dans l'application.
-import { StyleSheet , Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     inputContainer: {
@@ -49,11 +49,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     goalText: {
-        flex: 1,
         backgroundColor: "#FFFFDF",
         padding: 10,
         borderRadius: 5,
         marginRight: 10,
+        width: '70%',
     },
     deleteButton: {
         backgroundColor: "#C700DF",
@@ -61,7 +61,11 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     icon: {
-        marginHorizontal: 8,
+        paddingBottom: 15,
+    },
+    row: {
+        flexDirection: "row",
+        marginBottom: 5,
     },
 });
 

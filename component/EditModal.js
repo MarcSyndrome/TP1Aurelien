@@ -4,10 +4,13 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const styles = StyleSheet.create({
     centeredView: {
-      flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 22,
+      paddingRight: 20,
+    },
+    iconEdit:{
+        paddingBottom:5,
+        paddingLeft:15
     },
     modalView: {
       margin: 20,
@@ -75,7 +78,7 @@ const { handleEditGoal, index, initialValue } = props;
 </Modal>
     <Pressable
         onPress={() => setModalVisible(true)}>
-        <MaterialIcons name="edit" size={22} color="black" style={styles.icon} />
+        <MaterialIcons name="edit" size={23} color="black" style={styles.iconEdit} />
     </Pressable>
     </View>
   );
