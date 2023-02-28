@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text } from 'react-native';
+import { View, TextInput, Pressable, Text } from 'react-native';
 import styles from '../Styles/styles';
 
 const GoalInput = ({ onAdd }) => {
@@ -24,9 +24,9 @@ const GoalInput = ({ onAdd }) => {
                 value={newGoal}
                 onChangeText={setNewGoal}
             />
-            <TouchableOpacity style={styles.button} onPress={handleAddGoal}>
+            <Pressable android_ripple={{ color: "#AED3E3", radius: 40}} style={styles.button} onPress={handleAddGoal}>
                 <Text style={styles.buttonText}>Ajouter</Text>
-            </TouchableOpacity>
+            </Pressable>
         </View>
     );
 };

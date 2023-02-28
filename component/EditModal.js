@@ -68,7 +68,7 @@ const { handleEditGoal, index, initialValue } = props;
             value={EditText}
             onChangeText={text => setEditText(text)}
         />
-        <Pressable
+        <Pressable  android_ripple={{ color: "#AED3E3", radius: 30}}
             style={[styles.button, styles.buttonClose]}
             onPress={() => {handleEditGoal(index, EditText); setModalVisible(!modalVisible)}}>
             <Text style={styles.textStyle}>Modifier</Text>
